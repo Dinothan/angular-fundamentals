@@ -1,0 +1,44 @@
+.total {
+    font-size:24px;
+}
+.list {
+    list-style-type: none;
+    margin-left: 150px;
+    margin-right: 150px;
+}
+.list_item {
+    border:1px solid black;
+    height: 165px;
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-left: 10px;
+    text-align: center;
+}
+.list_bg{
+    background-color :silver;
+}
+.avatar {
+    width:150px;
+    height:150px;
+    float:left;
+}
+.title {
+    font-size:20px;
+}
+.description {
+    font-size:18px;
+}
+.demo-tab-group {
+    margin-left: 200px;
+    margin-right: 200px;
+    border: 1px solid #e8e8e8;
+  }
+  
+  .demo-tab-content {
+    padding: 16px;
+  }
+  .outbox{
+    margin-top: 50px;
+      margin-bottom: 50px;
+  }
+  

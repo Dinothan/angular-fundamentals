@@ -1,0 +1,104 @@
+<h3>{{title}} - {{displayQuery}}</h3>
+
+<div>
+    <input name="query" placeholder="Enter Search Here" [(ngModel)]="searchQuery" />
+    <button (click)="sendQuery()">Submit</button><br>
+</div>
+
+<div>
+    <p>
+        <a routerLink="/" routerLinkActive="active">
+            <button>Home</button>
+        </a>
+    </p>
+</div>
+
+
+<div *ngIf="searchResults; else elseBlock">
+    <div class="outbox" *ngIf="searchResults.items.length != 0; else noResults">
+        <h3 class="total">Total Results: {{searchResults.total_count}}</h3>
+
+        <mat-tab-group class="demo-tab-group" #matgroup>
+            <mat-tab label="Page 1">
+                <div class="demo-tab-content">
+
+
+                    <ul class="list">
+                        <li [ngClass]="{'list_bg': i % 2 === 0 }" class="list_item" *ngFor="let result of page; index as i;">
+                            <div>
+                                <a [href]="result.html_url">
+                                    <img class="avatar" [src]="result.owner.avatar_url" />
+                                    <h4 class="title">{{result.name}}
+                                        <small> by {{result.owner.login | uppercase}}</small>
+                                    </h4>
+                                </a>
+                                <p class="description"> {{result.description}}</p>
+                                <p> Created On: {{result.created_at | date:'fullDate'}} </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </mat-tab>
+
+            <mat-tab label="page 2">
+                <div class="demo-tab-content">
+
+                    <ul class="list">
+                        <li [ngClass]="{'list_bg': i % 2 === 0 }" class="list_item" *ngFor="let result of page1; index as i;">
+                            <div>
+                                <a [href]="result.html_url">
+                                    <img class="avatar" [src]="result.owner.avatar_url" />
+                                    <h4 class="title">{{result.name}}
+                                        <small> by {{result.owner.login | uppercase}}</small>
+                                    </h4>
+                                </a>
+                                <p class="description"> {{result.description}}</p>
+                                <p> Created On: {{result.created_at | date:'fullDate'}} </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </mat-tab>
+
+            <mat-tab label="page 3">
+                <div class="demo-tab-content">
+
+                    <ul class="list">
+                        <li [ngClass]="{'list_bg': i % 2 === 0 }" class="list_item" *ngFor="let result of page2; index as i;">
+                            <div>
+                                <a [href]="result.html_url">
+                                    <img class="avatar" [src]="result.owner.avatar_url" />
+                                    <h4 class="title">{{result.name}}
+                                        <small> by {{result.owner.login | uppercase}}</small>
+                                    </h4>
+                                </a>
+                                <p class="description"> {{result.description}}</p>
+                                <p> Created On: {{result.created_at | date:'fullDate'}} </p>
+                            </div>
+                        </li>
+                    </ul>
+
+                </div>
+            </mat-tab>
+
+        </mat-tab-group>
+        <div class="outbox">
+            <button (click)='matgroup.selectedIndex = 0'>1</button>
+            <button (click)='matgroup.selectedIndex = 1'>2</button>
+            <button (click)='matgroup.selectedIndex = 2'>3</button>
+            <button (click)="selectNext(matgroup)">Next</button>
+        </div>
+    </div>
+    <ng-template #noResults>
+        <div>
+            <p>"{{searchQuery}}" No results</p>
+        </div>
+
+    </ng-template>
+</div>
+
+<ng-template #elseBlock>
+    <p>Loading...</p>
+</ng-template>
