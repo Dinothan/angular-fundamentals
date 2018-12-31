@@ -87,5 +87,7 @@ export class GitSearchComponent implements OnInit {
   selectNext(el) {
     el.selectedIndex += 1;
   }
-
+  selectPrev(el) {
+    el.selectedIndex -= 1;
+  }
 }
