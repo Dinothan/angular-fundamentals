@@ -1,17 +1,21 @@
 <h3>{{title}} - {{displayQuery}}</h3>
 
-<div>
-    <input name="query" placeholder="Enter Search Here" [(ngModel)]="searchQuery" />
-    <button (click)="sendQuery()">Submit</button><br>
+<div class="navbar-form">
+
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search" name="query" [(ngModel)]="searchQuery">
+    </div>
+    <button (click)="sendQuery()" class="btn btn-default">Submit</button>
+
 </div>
 
-<div>
+<!-- <div>
     <p>
         <a routerLink="/" routerLinkActive="active">
             <button>Home</button>
         </a>
     </p>
-</div>
+</div> -->
 
 
 <div *ngIf="searchResults; else elseBlock">
@@ -24,8 +28,8 @@
 
 
                     <ul class="list">
-                        <li [ngClass]="{'list_bg': i % 2 === 0 }" class="list_item" *ngFor="let result of page; index as i;">
-                            <div>
+                        <li [ngClass]="{'list_bg': i % 2 === 0 }" *ngFor="let result of page; index as i;">
+                            <div class="list_item" *ngIf="result">
                                 <a [href]="result.html_url">
                                     <img class="avatar" [src]="result.owner.avatar_url" />
                                     <h4 class="title">{{result.name}}
